@@ -1,0 +1,6 @@
+{
+    "Python": {
+        "python": "/home/davide/envs/fido/bin/python",
+        "pythonExtraPaths": ["/home/davide/envs/fido/lib/python2.7/site-packages",]
+    },
+}
