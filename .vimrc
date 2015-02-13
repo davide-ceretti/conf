@@ -1,57 +1,44 @@
-set nocompatible  " be iMproved
-filetype off      " required
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
+" let Vundle manage Vundle, required
 Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-fugitive'
+
+" Nerdtree
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'klen/python-mode'
-" Bundle 'vim-scripts/pep8'
-Bundle 'vim-scripts/mru.vim'
-Bundle 'majutsushi/tagbar'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'scrooloose/syntastic'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'Lokaltog/vim-easymotion'
-"Bundle 'wincent/Command-T'
-"Bundle 'FuzzyFinder'
-Bundle 'kien/ctrlp.vim'
-Bundle 'msanders/snipmate.vim'
-Bundle 'mileszs/ack.vim'
-Bundle 'L9'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'Zenburn'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'moll/vim-node'
-Bundle 'jelera/vim-javascript-syntax'
-Bundle 'groenewege/vim-less'
 
-Bundle 'mustache/vim-mustache-handlebars'
+" Python syntax highlight
+Bundle 'klen/python-mode'
+
+" Autocompletion
+Bundle 'Valloric/YouCompleteMe'
+
+" Syntax checking
+Bundle 'scrooloose/syntastic'
+
+" Better status line
+Bundle 'Lokaltog/vim-powerline'
+
+" Jump to target
+Bundle 'Lokaltog/vim-easymotion'
+
+" Full path fuzzy file finder
+Bundle 'kien/ctrlp.vim'
+
+" Color scheme
 Bundle 'tomasr/molokai'
-Bundle '907th/vim-auto-save'
-filetype plugin indent on
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 " on .vimrc file save auto source
 autocmd! bufwritepost .vimrc source %
-
-" better copy & paste
-set pastetoggle=<F2>
-set clipboard=unnamed
-
-" simpler window navigation
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-h> <c-w>h
-
-" simpler tab navigation
-map <C-t><up> :tabr<cr>
-map <C-t><down> :tabl<cr>
-map <C-t><left> :tabp<cr>
-map <C-t><right> :tabn<cr>
 
 " easier indenting of block
 vnoremap < <gv
@@ -71,12 +58,13 @@ set noswapfile
 
 " Settings for ctrlp
 let g:ctrlp_max_height = 30
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git|tox\'
 set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=*/coverage/*
 set wildignore+=*collected_static/*
 
+" Colors
 syntax on
 set background=dark
 colorscheme molokai
@@ -122,11 +110,6 @@ set textwidth=79
 set formatoptions=qrn1
 set colorcolumn=80  " not needed as something discolors from col 80
 
-" folding w/ py bias
-set foldmethod=indent
-set foldlevel=99
-set foldnestmax=1
-
 nnoremap ; :
 au FocusLost * :wa
 
@@ -150,32 +133,10 @@ let g:pymode_syntax = 1
 let g:pymode_rope = 0   " disable for Jedi-vim
 let g:pymode_lint_on_fly = 1
 
-" Tab navigation
-nnoremap th  :tabfirst<CR>
-nnoremap tj  :tabnext<CR>
-nnoremap tk  :tabprev<CR>
-nnoremap tl  :tablast<CR>
-nnoremap tt  :tabedit<Space>
-nnoremap tn  :tabnext<Space>
-nnoremap tm  :tabm<Space>
-nnoremap td  :tabclose<CR>
-" Alternatively use
-"nnoremap th :tabnext<CR>
-"nnoremap tl :tabprev<CR>
-"nnoremap tn :tabnew<CR>
-
-
+" better copy & paste
 set clipboard=unnamedplus
+
 set t_Co=256
-colorscheme molokai
 set number
 
-let g:pymode_lint_cwindow = 0 
-
-let g:auto_save = 0  " enable AutoSave on Vim startup
-
-" Is either hardcore or nothing
-map <Left> <Nop>
-map <Right> <Nop>
-map <Up> <Nop>
-map <Down> <Nop>
+let g:pymode_lint_cwindow = 0
